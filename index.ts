@@ -3,16 +3,16 @@ import * as _ from 'lodash';
 // ========================================================================
 // VOCABULARY
 // ========================================================================
-enum Conjuction {
+export enum Conjuction {
     AND, OR
 };
 
-type DecisionRule<T> = {
+export type DecisionRule<T> = {
     name: string;
     applyTo: (item: Readonly<T>) => boolean;
 }
 
-class MyCollection<T> {
+export class MyCollection<T> {
     private items : T[] = [];
 
     constructor(items: T[]) {
@@ -58,9 +58,13 @@ class MyCollection<T> {
 
         return new MyCollection(result);
     }
+
+    getItems() {
+        return this.items;
+    }
 }
 
-type Person = {
+export type Person = {
     id: string;
     email: string;
     firstName: string;
@@ -69,23 +73,23 @@ type Person = {
 }
 
 // Individual rule functions for type Person
-function ageGreaterThan(person: Person, threshold: number): boolean {
+export function ageGreaterThan(person: Person, threshold: number): boolean {
     const diff =  Date.now() - person.birthDate;
     const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
     return age > threshold;
 }
 
-function ageLessThan(person: Person, threshold: number): boolean {
+export function ageLessThan(person: Person, threshold: number): boolean {
     const diff =  Date.now() - person.birthDate;
     const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
     return age < threshold;
 }
 
-function firstNameEquals(person: Person, firstName: string): boolean {
+export function firstNameEquals(person: Person, firstName: string): boolean {
     return person.firstName === firstName;
 }
 
-function lastNameEquals(person: Person, lastName: string): boolean {
+export function lastNameEquals(person: Person, lastName: string): boolean {
     return person.lastName === lastName;
 }
 
@@ -96,7 +100,7 @@ function lastNameEquals(person: Person, lastName: string): boolean {
 // Define people
 const people : Person[] = [
     { id: "1", email: "smith@gmail.com", firstName: "John", lastName: "Smith", birthDate: new Date("1971, 2, 5").getTime() },
-    { id: "2", email: "newman@gmail.com", firstName: "Elisa", lastName: "Newman", birthDate: new Date("1975, 6, 5").getTime() },
+    { id: "2", email: "newman@gmail.com", firstName: "Elisa", lastName: "Newman", birthDate: new Date("1979, 6, 5").getTime() },
     { id: "3", email: "raider@gmail.com", firstName: "James", lastName: "Raider", birthDate: new Date("1999, 11, 1").getTime() },
     { id: "4", email: "raider2@gmail.com", firstName: "James", lastName: "Raider", birthDate: new Date("1973, 9, 2").getTime() },
     { id: "5", email: "rhodes@gmail.com", firstName: "Jenna", lastName: "Rhodes", birthDate: new Date("1989, 5, 7").getTime() },
