@@ -3,13 +3,18 @@
 
 ## Task 1
 
-### Domain Model
+### Models
+
+#### Domain Model
 ![domain model](./images/domain_model.png)
 
-### Relational model
+#### Relational model
 ![relational model](./images/relational_model.png)
 
-### First Query
+### Queries
+I used date functions from [Oracle](https://www.oracletutorial.com/oracle-date-functions/).
+
+#### Query 1
 Select all clients with principal (in all of their accounts) higher than some number C at the end of the month.
 
 ```
@@ -23,9 +28,7 @@ HAVING SUM(b.principal) > C
 ORDER BY cl.last_name, cl.first_name
 ```
 
-I used date function from [Oracle](https://www.oracletutorial.com/oracle-date-functions/).
-
-### Second Query
+#### Query 2
 Select first 10 clients that have the highest accounts receivable at the end of the month.
 
 ```

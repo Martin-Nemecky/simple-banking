@@ -60,9 +60,6 @@ class MyCollection<T> {
     }
 }
 
-// ========================================================================
-// DATA
-// ========================================================================
 type Person = {
     id: string;
     email: string;
@@ -70,6 +67,31 @@ type Person = {
     lastName: string;
     birthDate: number;
 }
+
+// Individual rule functions for type Person
+function ageGreaterThan(person: Person, threshold: number): boolean {
+    const diff =  Date.now() - person.birthDate;
+    const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+    return age > threshold;
+}
+
+function ageLessThan(person: Person, threshold: number): boolean {
+    const diff =  Date.now() - person.birthDate;
+    const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+    return age < threshold;
+}
+
+function firstNameEquals(person: Person, firstName: string): boolean {
+    return person.firstName === firstName;
+}
+
+function lastNameEquals(person: Person, lastName: string): boolean {
+    return person.lastName === lastName;
+}
+
+// ========================================================================
+// DATA
+// ========================================================================
 
 // Define people
 const people : Person[] = [
@@ -83,16 +105,10 @@ const people : Person[] = [
 
 // Define rules
 const rules : DecisionRule<Person>[] = [
-    { name: 'RULE-1', applyTo: (item) => item.firstName === "James" },
-    { name: 'RULE-2', applyTo: (item) => item.lastName === "Raider" },
-    { 
-        name: 'RULE-3',
-        applyTo: (item) => {
-            const diff =  Date.now() - item.birthDate;
-            const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
-            return age > 50;
-        }
-    },
+    { name: 'RULE-1', applyTo: (item) => firstNameEquals(item, "James") },
+    { name: 'RULE-2', applyTo: (item) => lastNameEquals(item, "Raider") },
+    { name: 'RULE-3', applyTo: (item) => ageGreaterThan(item, 50) },
+    { name: 'RULE-4', applyTo: (item) => ageLessThan(item, 70) },
     // { name: 'YOUR NEW RULE ', applyTo: (item) => true },
 ];
 
