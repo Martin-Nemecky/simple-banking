@@ -43,6 +43,11 @@ LIMIT 10;
 
 ## Task 2
 
+Install dependencies:
+```
+npm install
+```
+
 Run to compile the code:
 ```
 npm run compile
