@@ -42,7 +42,7 @@ LIMIT 10;
 ```
 
 ## Task 2
-
+You can find the source code in the `index.ts` file. You can also check out the `index.test.ts` to see couple of examples.
 Install dependencies:
 ```
 npm install
