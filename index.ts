@@ -21,7 +21,7 @@ export class MyCollection<T> {
 
     /**
      * Filter items based on given rules. 
-     * It is possible to chain the filter function calls because the return value is again the MyCollection<T> instance.
+     * It is possible to chain the filter function calls because the returned value is again the MyCollection<T> instance.
      * 
      * @param rules
      * @param options options that influence the filtering proccess (e. g. conjunction defines logical operator which should be applied between the rules)
