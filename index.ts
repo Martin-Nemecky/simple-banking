@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 
 // ========================================================================
-// VOCABULARY
+// GENERAL VOCABULARY
 // ========================================================================
 export enum Conjunction {
     AND, OR
@@ -64,6 +64,9 @@ export class MyCollection<T> {
     }
 }
 
+// ========================================================================
+// PERSON and HIS SPECIFIC RULE FUNCTIONS
+// ========================================================================
 export type Person = {
     id: string;
     email: string;
@@ -72,7 +75,6 @@ export type Person = {
     birthDate: number;
 }
 
-// Individual rule functions for type Person
 export function ageGreaterThan(person: Person, threshold: number): boolean {
     const diff =  Date.now() - person.birthDate;
     const age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
