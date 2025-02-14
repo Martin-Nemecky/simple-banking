@@ -1,0 +1,29 @@
+{
+  "name": "filtering-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "npx tsc",
+    "start": "node index.js",
+    "clean": "rm index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Martin-Nemecky/simple-banking.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Martin-Nemecky/simple-banking/issues"
+  },
+  "homepage": "https://github.com/Martin-Nemecky/simple-banking#readme",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.15"
+  }
+}
