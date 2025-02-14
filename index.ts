@@ -96,8 +96,6 @@ export function lastNameEquals(person: Person, lastName: string): boolean {
 // ========================================================================
 // DATA
 // ========================================================================
-
-// Define people
 const people : Person[] = [
     { id: "1", email: "smith@gmail.com", firstName: "John", lastName: "Smith", birthDate: new Date("1971, 2, 5").getTime() },
     { id: "2", email: "newman@gmail.com", firstName: "Elisa", lastName: "Newman", birthDate: new Date("1979, 6, 5").getTime() },
@@ -107,7 +105,6 @@ const people : Person[] = [
     { id: "6", email: "goodman@gmail.com", firstName: "Alice", lastName: "Goodman", birthDate: new Date("2002, 1, 9").getTime() },
 ];
 
-// Define rules
 const rules : DecisionRule<Person>[] = [
     { name: 'RULE-1', applyTo: (item) => firstNameEquals(item, "James") },
     { name: 'RULE-2', applyTo: (item) => lastNameEquals(item, "Raider") },
