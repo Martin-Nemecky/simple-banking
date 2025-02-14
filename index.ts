@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 // ========================================================================
 // VOCABULARY
 // ========================================================================
-export enum Conjuction {
+export enum Conjunction {
     AND, OR
 };
 
@@ -27,7 +27,7 @@ export class MyCollection<T> {
      * @param options options that influence the filtering proccess (e. g. conjunction defines logical operator which should be applied between the rules)
      * @returns new instance of MyCollection<T> with filtered items
      */
-    filter(rules: DecisionRule<T>[], options : { conjunction: Conjuction } = { conjunction: Conjuction.AND }): MyCollection<T> {
+    filter(rules: DecisionRule<T>[], options : { conjunction: Conjunction } = { conjunction: Conjunction.AND }): MyCollection<T> {
         const result : T[] = [];
 
         for(const item of this.items) {
@@ -36,13 +36,13 @@ export class MyCollection<T> {
             for(const rule of rules) {
                 const isRuleSatisfied = rule.applyTo(item);
 
-                if(options.conjunction === Conjuction.AND && isRuleSatisfied){
+                if(options.conjunction === Conjunction.AND && isRuleSatisfied){
                     matchesFilters = true;
                     continue;
-                } else if (options.conjunction === Conjuction.AND && !isRuleSatisfied) {
+                } else if (options.conjunction === Conjunction.AND && !isRuleSatisfied) {
                     matchesFilters = false;
                     break;
-                } else if (options.conjunction === Conjuction.OR && isRuleSatisfied){
+                } else if (options.conjunction === Conjunction.OR && isRuleSatisfied){
                     matchesFilters = true;
                     break;
                 } else {
@@ -124,7 +124,7 @@ const rules : DecisionRule<Person>[] = [
 const collection = new MyCollection(people);
 
 // Filter items based on rules
-const result = collection.filter(rules, { conjunction: Conjuction.AND });
+const result = collection.filter(rules, { conjunction: Conjunction.AND });
 
 // Print the result
 console.log(JSON.stringify(result, null, 2));

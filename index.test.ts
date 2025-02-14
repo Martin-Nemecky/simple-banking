@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import { ageGreaterThan, ageLessThan, Conjuction, DecisionRule, firstNameEquals, lastNameEquals, MyCollection, Person } from './index.js';
+import { ageGreaterThan, ageLessThan, Conjunction, DecisionRule, firstNameEquals, lastNameEquals, MyCollection, Person } from './index.js';
 
 const people : Person[] = [
     { id: "1", email: "smith@gmail.com", firstName: "John", lastName: "Smith", birthDate: new Date("1971, 2, 5").getTime() },
@@ -16,7 +16,7 @@ test('test first name rule', () => {
     ];
 
     const collection = new MyCollection(people);
-    const result = collection.filter(rules, { conjunction: Conjuction.AND });
+    const result = collection.filter(rules, { conjunction: Conjunction.AND });
 
     expect(result.getItems().length).toBe(2);
     expect(result.getItems().at(0)?.id).toBe('3');
@@ -29,7 +29,7 @@ test('test last name rule', () => {
     ];
 
     const collection = new MyCollection(people);
-    const result = collection.filter(rules, { conjunction: Conjuction.AND });
+    const result = collection.filter(rules, { conjunction: Conjunction.AND });
 
     expect(result.getItems().length).toBe(1);
     expect(result.getItems().at(0)?.id).toBe('6');
@@ -41,7 +41,7 @@ test('test age greater than 50 rule', () => {
     ];
 
     const collection = new MyCollection(people);
-    const result = collection.filter(rules, { conjunction: Conjuction.AND });
+    const result = collection.filter(rules, { conjunction: Conjunction.AND });
 
     expect(result.getItems().length).toBe(2);
     expect(result.getItems().at(0)?.id).toBe('1');
@@ -54,7 +54,7 @@ test('test age less than 50 rule', () => {
     ];
 
     const collection = new MyCollection(people);
-    const result = collection.filter(rules, { conjunction: Conjuction.AND });
+    const result = collection.filter(rules, { conjunction: Conjunction.AND });
 
     expect(result.getItems().length).toBe(4);
     expect(result.getItems().at(0)?.id).toBe('2');
@@ -67,7 +67,7 @@ test('test no rule', () => {
     const rules : DecisionRule<Person>[] = [];
 
     const collection = new MyCollection(people);
-    const result = collection.filter(rules, { conjunction: Conjuction.AND });
+    const result = collection.filter(rules, { conjunction: Conjunction.AND });
 
     expect(result.getItems().length).toBe(6);
     expect(result.getItems().at(0)?.id).toBe('1');
@@ -85,7 +85,7 @@ test('test multiple rules', () => {
     ];
 
     const collection = new MyCollection(people);
-    const result = collection.filter(rules, { conjunction: Conjuction.AND });
+    const result = collection.filter(rules, { conjunction: Conjunction.AND });
 
     expect(result.getItems().length).toBe(1);
     expect(result.getItems().at(0)?.id).toBe('3');
@@ -98,7 +98,7 @@ test('test multiple rules with OR', () => {
     ];
 
     const collection = new MyCollection(people);
-    const result = collection.filter(rules, { conjunction: Conjuction.OR });
+    const result = collection.filter(rules, { conjunction: Conjunction.OR });
 
     expect(result.getItems().length).toBe(5);
     expect(result.getItems().at(0)?.id).toBe('2');
