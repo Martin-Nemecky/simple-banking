@@ -17,7 +17,7 @@ SELECT a.client_id, cl.first_name, cl.last_name
 FROM client cl
 JOIN account a ON a.client_id = cl.id
 JOIN balance b ON b.account_id = a.id
-WHERE b.date <= ADD_MONTHS(LAST_DAY(b.date), -1)
+WHERE b.date <= ADD_MONTHS(LAST_DAY(CURRENT_DATE), -1)
 GROUP BY a.client_id, cl.first_name, cl.last_name
 HAVING SUM(b.principal) > C
 ORDER BY cl.last_name, cl.first_name
@@ -33,7 +33,7 @@ SELECT a.client_id, c.first_name, c.last_name, SUM(b.principal + b.interest - b.
 FROM client c
 JOIN account a ON a.client_id = c.id
 JOIN balance b ON b.account_id = a.id
-WHERE b.date <= ADD_MONTHS(LAST_DAY(b.date), -1)
+WHERE b.date <= ADD_MONTHS(LAST_DAY(CURRENT_DATE), -1)
 GROUP BY a.client_id, c.first_name, c.last_name
 ORDER BY total_accounts_receivable DESC
 FETCH FIRST 10 ROWS ONLY;
