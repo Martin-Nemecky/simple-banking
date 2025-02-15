@@ -12,6 +12,10 @@
 ![relational model](./images/relational_model.png)
 
 ### Queries
+- I use SQL for querying the PostgreSQL database, which has couple of specifics (e.g. keyword `LIMIT`). 
+- I assume that the balance table stores the snapshots of values that principal (jistina), interest (úrok) and fee (poplatek) have at the end of each day. So the end of the month values are stored in the record with date e.g. `2025-01-31`.
+- The amount of accounts receivable is calculated as `principal + interest - fee`.
+- I assume that each of the variables (principal, interest, fee) has non-negative value.
 
 #### Query 1
 Select all clients with principal (in all of their accounts) higher than some number **C** at the end of the month.
@@ -46,28 +50,29 @@ LIMIT 10;
 Hint: `The WHERE clause selects records that correspond to the last day of the previous month.`
 
 ## Task 2
-You can find the source code in the `index.ts` file. You can also check out the `index.test.ts` to see couple of examples.
-Install dependencies:
+I have used TypeScript for the programming. You can find the source code in the `index.ts` file. You can also check out the `index.test.ts` to see couple of examples.
+
+Use terminal to install the dependencies:
 ```
 npm install
 ```
 
-Run to compile the code:
+Compile the code:
 ```
 npm run compile
 ```
 
-Run to execute the code:
+Execute the code:
 ```
 npm run start
 ```
 
-Run to clean the compiled files:
+Clean the compiled files:
 ```
 npm run clean
 ```
 
-Run to start tests:
+Start tests:
 ```
 npm run test
 ```
