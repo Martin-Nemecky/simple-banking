@@ -6,7 +6,7 @@
   "scripts": {
     "compile": "npx tsc",
     "start": "node index.js",
-    "clean": "rm index.js",
+    "clean": "rm index.js index.test.mjs",
     "test": "npx vitest"
   },
   "repository": {
